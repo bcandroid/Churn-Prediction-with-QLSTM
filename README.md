@@ -1,5 +1,5 @@
 
-### Churn Prediction Using ADASYN, Isolation Forest, LSTM, Q-learning, and SHAP**
+### Churn Prediction Using ADASYN, Isolation Forest, LSTM, Q-learning, and SHAP
 
 In the competitive landscape of customer retention, predicting churn is crucial for businesses to maintain and grow their customer base. Our approach integrates advanced machine learning techniques, including ADASYN, Isolation Forest, LSTM, and Q-learning, followed by an evaluation using SHAP for interpretability. Here’s a detailed explanation of the methodology and the rationale behind each step.
 

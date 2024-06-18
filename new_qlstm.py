@@ -163,14 +163,14 @@ print('Mean Squared Error:', mse)
 import shap
 shap.initjs()
 
-def predict_fn(x):
-    return model.predict(x.reshape(x.shape[0], x.shape[1], 1))  # Reshape to match model input
+# X_test'i iki boyutlu hale getirin
+X_test_reshaped = X_test.reshape((X_test.shape[0], X_test.shape[1]))
 
-# Scale X_test if not already scaled
-X_test_scaled = scaler.transform(X_test)  # Assuming scaler is defined and fitted
+# Scale X_test
+X_test_scaled = scaler.transform(X_test_reshaped)  # scaler'ı tanımladığınız ve fit ettiğiniz varsayılır
 
-# Create SHAP explainer and calculate SHAP values
-explainer = shap.KernelExplainer(predict_fn, X_test_scaled)  # Using KernelExplainer for non-tree models
+# SHAP explainer ve SHAP değerlerini oluşturun
+explainer = shap.KernelExplainer(predict_fn, X_test_scaled)  # KernelExplainer, ağaç olmayan modeller için kullanılır
 shap_values = explainer.shap_values(X_test_scaled)
 
 # SHAP değerlerini görselleştirme
@@ -180,7 +180,7 @@ shap.summary_plot(shap_values, X_test_scaled, plot_type="bar")
 # Beeswarm plot
 shap.summary_plot(shap_values, X_test_scaled)
 
-# Violin plot (SHAP summary plot can act as a violin plot)
+# Violin plot (SHAP summary plot bir violin plot gibi davranabilir)
 shap.summary_plot(shap_values, X_test_scaled, plot_type='violin')
 
 # Waterfall plot (ilk örnek için)
